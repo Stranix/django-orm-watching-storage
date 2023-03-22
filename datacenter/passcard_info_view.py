@@ -8,7 +8,6 @@ from datacenter.models import format_duration
 
 def passcard_info_view(request, passcode):
 
-    # Программируем здесь
     passcard = get_object_or_404(Passcard, passcode=passcode)
     all_passcard_visits = Visit.objects.filter(passcard=passcard)
     this_passcard_visits = []
