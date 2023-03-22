@@ -39,14 +39,11 @@ class Visit(models.Model):
         return time_in_storage
 
     def is_long(self, minutes: int = 60) -> bool:
-        result = False
 
         visit_duration = self.get_duration()
         visit_minutes = visit_duration.total_seconds() // 60
-        if visit_minutes > minutes:
-            result = True
 
-        return result
+        return visit_minutes > minutes
 
 
 def format_duration(duration: datetime.timedelta) -> str:
