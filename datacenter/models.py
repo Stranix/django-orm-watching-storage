@@ -1,5 +1,5 @@
 from django.db import models
-from datetime import timedelta
+import datetime
 import django
 
 
@@ -31,16 +31,10 @@ class Visit(models.Model):
             )
         )
 
-    def get_duration(self) -> timedelta:
+    def get_duration(self) -> datetime.timedelta:
 
-        current_time = django.utils.timezone.localtime()
-        timezone_entered_time = django.utils.timezone.localtime(self.entered_at)
-        timezone_leaved_time = django.utils.timezone.localtime(self.leaved_at)
-
-        time_in_storage = timezone_leaved_time - timezone_entered_time
-
-        if not self.leaved_at:
-            time_in_storage = current_time - timezone_entered_time
+        leaved_time = django.utils.timezone.localtime(self.leaved_at)
+        time_in_storage = leaved_time - self.entered_at
 
         return time_in_storage
 
@@ -55,7 +49,7 @@ class Visit(models.Model):
         return result
 
 
-def format_duration(duration: timedelta) -> str:
+def format_duration(duration: datetime.timedelta) -> str:
     days = duration.days
     seconds = duration.seconds
 
