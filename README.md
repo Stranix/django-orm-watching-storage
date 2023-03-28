@@ -15,8 +15,9 @@
 ```DB_PASSWORD``` - пароль к бд  
 ```SECRET_KEY``` - секретный ключ, с помощью которого шифруют пароли пользователей сайта  
 подробности можно узнать [тут](https://docs.djangoproject.com/en/2.2/ref/settings/#secret-key)  
-```ALLOWED_HOSTS``` - список разрешенных хостов. Подробности [тут](https://docs.djangoproject.com/en/2.2/ref/settings/#allowed-hosts)  
-```DEBUG``` - включение/отключение логирования 
+```ALLOWED_HOSTS``` - список разрешенных хостов. (по умолчанию: ```['127.0.0.1', 'localhost']```) 
+Подробности [тут](https://docs.djangoproject.com/en/2.2/ref/settings/#allowed-hosts)  
+```DEBUG``` - включение/отключение логирования (по умолчанию: ```False```)
 4. Запуск проекта на встроенном Django сервере: `python3 manage.py runserver 0.0.0.0:8000`
 
 ### Цель проекта
